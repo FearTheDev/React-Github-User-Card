@@ -1,6 +1,8 @@
 import React from 'react';
 
-const GitHubCard = ({...props}) =>{
+const GitHubCard = (props) =>{
+
+    const {login, avatar_url, followers, bio, blog} = props;
 
     return(
         <div className="gh-card">
