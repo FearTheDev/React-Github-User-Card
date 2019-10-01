@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import GitHubCard from './components/GitHubCard';
+import GitHubFollowerCard from './components/GitHubFollowerCard';
 
 class App extends React.Component {
 
@@ -14,12 +15,18 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    console.log(`App.js: cDM - ${'Component did mount!'}`);
     axios.get(`https://api.github.com/users/${this.state.user}`)
     .then(res => {
       this.setState({
         userData: res.data
       });
+
+      axios.get(res.data.followers_url)
+      .then(res =>{
+        this.setState({
+          followers: res.data
+        });
+      }).catch(error => new Error(error));
     })
     .catch(error => new Error(error));
   }
@@ -33,7 +40,7 @@ class App extends React.Component {
 
   render() {
 
-    if(this.state.userData.length <= 1){
+    if(this.state.userData.length <= 1 && this.state.followers <= 1){
       return(
         <h1>Loading Data.. </h1>
       );
@@ -42,6 +49,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <GitHubCard {...this.state.userData}/>
+        <div>
+          {this.state.followers.map((follower, index)=>{
+            return <GitHubFollowerCard key={index} {...follower} />
+          })}
+        </div>
       </div>
     );
   }
