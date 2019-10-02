@@ -60,13 +60,17 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <SearchComponent searchUser={this.searchUser} />
-        <GitHubCard {...this.state.userData} />
+        <div className="gh-find-components">
+          <SearchComponent searchUser={this.searchUser} />
+          <GitHubCard {...this.state.userData} />
+        </div>
         <div className="gh-followers-list">
           {this.state.followers.map((follower, index) => {
-            return <GitHubFollowerCard key={index} {...follower} />
+            return <GitHubFollowerCard key={index} {...follower} searchUser={this.searchUser} />
           })}
+          
         </div>
+        <footer><h2>Lambda School Project by <a href="https://fearthedev.com/" target="_blank" rel="noopener noreferrer">FearTheDev</a></h2></footer>
       </div>
     );
   }

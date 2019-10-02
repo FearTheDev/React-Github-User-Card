@@ -12,23 +12,19 @@
 
 .App{
   width:100%;
-  display:flex;
-  flex-direction:column;
-  padding-top:50px;
   background-color:#F5f5f5;
   /* background-color: #be9764;  NO THANK YOU */
+  padding-top:260px;
 }
 
 .search-bar{
   display:flex;
   align-items:center;
-  position:fixed;
-  top:0;
-  left:0;
   width:100%;
   height:50px;
   background-color:#0b3c5d;
   border-bottom:1px solid #000;
+  padding:5px 10px;
 }
 
 .search-form{
@@ -66,53 +62,102 @@
   cursor:pointer;
 }
 
-.gh-followers-list{
-  width:100%;
-  display:flex;
-  flex-wrap: wrap;
-}
-
 
 .gh-card{
   background-color:#fff;
+  height:100%;
   width:100%;
   display:flex;
-  flex-wrap:nowrap;
-  padding:10px;
   align-items: center;
-  height:340px;
+  padding:10px;
 }
 
 .gh-user{
+  width:250px;
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items:center;
   margin-right:20px;
+  height:100%;
 }
 
 .gh-user-login{
-  font-size:1.5rem;
+  font-size:1.2rem;
   margin:10px 0;
+  font-family: 'Fjalla One', sans-serif;
 }
 
 .gh-avatar{
   display:flex;
-  align-items:center;
+  align-items: center;
   justify-content: center;
-  max-width:240px;
-  min-width: 200px;
-  width:100%;
+  height:150px;
+  width:150px;
   border-radius:50%;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .gh-avatar-img{
-  width:100%;
+  width:134%;
+}
+
+.gh-avatar-img:hover{
+  cursor:pointer;
+}
+
+.gh-user-info{
+  font-size:0.8rem;
+  color:#000;
+  font-weight:600;
 }
 
 .gh-user-info p{
+  display:inline;
   font-size:0.8rem;
+  color:#000a;
+}
+
+.gh-user-info a{
+  font-size:0.8rem;
+  color:#000a;
+}
+
+.gh-find-components{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  background-color:#fff;
+  border-bottom: 2px solid #0003;
+  overflow-y:hidden;
+}
+
+.gh-website{
+  text-decoration:none;
+  color:#000;
+
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  width:200px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight:400;
+  color:white;
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.gh-followers-list{
+  max-width:1300px;
+  min-width:600px;
+  display:flex;
+  flex-wrap: wrap;
+  padding:10px;
+  margin:0 auto;
 }
 
 .gh-follower-card{
@@ -122,14 +167,76 @@
   justify-content: center;
   width:300px;
   height:300px;
-  margin:5px;
+  margin:10px;
   background-color:#fff;
+  border-bottom-right-radius: 25px;
+  border-top-left-radius: 25px;
+  border: 2px solid #0001;
+}
+
+.gh-follower-login{
+  font-family: 'Fjalla One', sans-serif;
+  text-align:center;
 }
 
 .gh-follower-avatar{
   width:200px;
+  cursor:pointer;
+}
+
+.gh-follower-avatar img{
+  width:100%;
+  border-bottom-left-radius: 25px;
+  border-top-right-radius: 25px;
 }
 
 .gh-follower-card p{
   font-size:0.8rem;
+}
+
+::-webkit-scrollbar{
+  width:12px;
+  
+}
+
+::-webkit-scrollbar-track{
+  background-color:#0b3c5d;
+  border-left:1px solid #000a;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color:#000a;
+}
+
+.gh-received-info{
+  color:#0008;
+  font-size:1rem;
+  font-weight:500;
+  margin-bottom:12px;
+}
+
+.gh-follower-link{
+  text-decoration:none;
+  color:#000D;
+  font-size:1.3rem;
+  font-weight:400;
+}
+
+footer{
+  display:flex;
+  align-items: center;
+  justify-content: flex-end;
+  width:100%;
+  height:50px;
+}
+
+footer h2{
+  font-weight:400;
+  margin:0 20px;
+  color:#0004;
+}
+
+footer h2 a{
+  color:#000a;
+  text-decoration: none;
 }

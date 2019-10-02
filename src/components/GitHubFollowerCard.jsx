@@ -8,10 +8,12 @@ const GitHubFollowerCard = props =>{
     <div className="gh-follower-card">
         <div className="gh-follower">
             <h1 className="gh-follower-login">{login}</h1>
-            <img className="gh-follower-avatar" src={avatar_url} alt={`avatar for ${login}`}/>
+            <div className="gh-follower-avatar">
+                <img onClick={() => props.searchUser(login)}  src={avatar_url} alt={`avatar for ${login}`} />
+            </div>
         </div>
         <p className="gh-follower-bio">{bio}</p>
-        <p className="gh-follower-url">{html_url}</p>
+        <a href={html_url} target="_blank" rel="noopener noreferrer" className="gh-follower-link">View Profile</a>
     </div>
     );
 };

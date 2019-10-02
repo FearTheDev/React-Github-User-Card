@@ -27,8 +27,9 @@ class SearchComponent extends Component{
     render(){
         return(
             <div className="search-bar">
+                <h1 className="logo">Followers</h1>
                 <form className="search-form" onSubmit={this.handleSubmit}>
-                    <input type="text" name="search" placeholder="search user" onChange={this.handleChange}/>
+                    <input type="text" name="search" placeholder="search for user's followers" onChange={this.handleChange}/>
                     <button type="submit">Search</button>
                 </form>
             </div>
