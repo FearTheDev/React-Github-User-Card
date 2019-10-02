@@ -3,6 +3,7 @@ import axios from 'axios';
 import GitHubCard from './components/GitHubCard';
 import GitHubFollowerCard from './components/GitHubFollowerCard';
 import SearchComponent from './components/SearchComponent';
+import Troll from './components/RickRollComponent';
 import './App.css';
 
 class App extends React.Component {
@@ -10,9 +11,10 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      user: 'FearTheDev',
+      user: 'fearthedev',
       userData: [],
-      followers: []
+      followers: [],
+      activeTroll: false
     }
   }
 
@@ -50,30 +52,53 @@ class App extends React.Component {
     })
   }
 
-  render() {
 
-    if (this.state.userData.length <= 1 && this.state.followers <= 1) {
-      return (
-        <h1>Loading Data.. </h1>
-      );
+  moveVideo(e) {
+    let video = document.querySelector('.moving-video');
+    if (video) {
+      video.style.top = `${Math.floor(Math.random() * Math.floor(100))}px`;
+      video.style.left = `${Math.floor(Math.random() * Math.floor(1200))}px`;
     }
+    
+  }
 
+  timer = setInterval(this.moveVideo, 500);
+
+  launchTroll = e =>{
+    this.setState({
+      activeTroll: true
+    });
+  };
+
+render() {
+
+  if (this.state.userData.length <= 1 && this.state.followers <= 1) {
     return (
-      <div className="App">
-        <div className="gh-find-components">
-          <SearchComponent searchUser={this.searchUser} />
-          <GitHubCard {...this.state.userData} />
-        </div>
-        <div className="gh-followers-list">
-          {this.state.followers.map((follower, index) => {
-            return <GitHubFollowerCard key={index} {...follower} searchUser={this.searchUser} />
-          })}
-          
-        </div>
-        <footer><h2>Lambda School Project by <a href="https://fearthedev.com/" target="_blank" rel="noopener noreferrer">FearTheDev</a></h2></footer>
-      </div>
+      <h1>Loading Data.. </h1>
     );
   }
+
+  return (
+
+    <div className="App" onDoubleClick={this.launchTroll}>
+      {this.state.activeTroll && <Troll />}
+      <div className="gh-find-components">
+        <SearchComponent searchUser={this.searchUser} />
+        <GitHubCard {...this.state.userData} />
+      </div>
+      <div className="call-to-action">
+        <h1>I dare you to double click that mouse!</h1>
+      </div>
+      <div className="gh-followers-list">
+        {this.state.followers.map((follower, index) => {
+          return <GitHubFollowerCard key={index} {...follower} searchUser={this.searchUser} />
+        })}
+      </div>
+      
+      <footer><h2>Lambda School Project by <a href="https://fearthedev.com/" target="_blank" rel="noopener noreferrer">FearTheDev</a></h2></footer>
+    </div>
+  );
+}
 
 }
 

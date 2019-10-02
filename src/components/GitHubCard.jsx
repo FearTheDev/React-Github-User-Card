@@ -4,8 +4,6 @@ const GitHubCard = props =>{
 
     const {login, avatar_url, followers, bio, blog} = props;
 
-    console.log(bio);
-
     return(
         <div className="gh-card">
             <div className="gh-user">
